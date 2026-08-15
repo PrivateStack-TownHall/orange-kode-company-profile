@@ -1,40 +1,140 @@
-<<<<<<< HEAD
-# IT-Training
-=======
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Orange Kode - Web Profile Company
 
-## Getting Started
+## Overview
 
-First, run the development server:
+**Orange Kode Web Profile Company** adalah website resmi untuk menampilkan informasi mengenai program bootcamp, kursus, dan layanan edukasi teknologi yang disediakan oleh **Orange Kode**.
+
+Website ini berfungsi sebagai:
+
+- Company profile
+- Landing page untuk bootcamp dan kursus
+- Platform publikasi artikel edukasi seputar web development
+- Media promosi untuk menarik calon peserta bootcamp
+
+Website ini dibangun menggunakan **Next.js** untuk memaksimalkan **SEO, performance, dan scalability**, sehingga konten seperti artikel dapat terindeks dengan baik oleh mesin pencari.
+
+---
+
+## Tech Stack
+
+Berikut teknologi utama yang digunakan dalam project ini.
+
+### Core Framework
+
+- **Next.js** – React framework untuk SSR dan SEO
+- **React** – Library untuk membangun user interface
+- **Node.js** – Runtime environment
+
+### Styling
+
+- **TailwindCSS** – Utility-first CSS framework
+- **PostCSS**
+- **Autoprefixer**
+
+### UI & Animation
+
+- **Framer Motion** – Animation library
+- **Lucide React** – Icon library
+
+### Utility
+
+- **clsx** – Conditional className utility
+
+### SEO
+
+- **next-seo** – SEO management untuk Next.js
+
+### Content
+
+- **MDX / Markdown** (opsional) – Untuk artikel konten
+
+---
+
+## Project Structure
+
+```bash
+src
+│
+├── app                # Next.js routing (App Router)
+├── components         # Reusable UI components
+├── sections           # Page sections (Hero, Courses, CTA, dll)
+├── features           # Feature-based modules (articles)
+├── data               # Static data
+├── lib                # Utilities dan helper
+├── assets             # Images dan icons
+└── styles             # Global styling
+```
+
+---
+
+## Installation
+
+Clone repository:
+
+```bash
+git clone https://github.com/your-username/orangekode-profile.git
+```
+
+Masuk ke folder project:
+
+```bash
+cd orangekode-profile
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+---
+
+## Running the Project
+
+Menjalankan project di mode development:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Aplikasi akan berjalan di:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Build Production
 
-To learn more about Next.js, take a look at the following resources:
+Untuk membuat build production:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Menjalankan build production:
 
-## Deploy on Vercel
+```bash
+npm start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
->>>>>>> b481a5042fc74ba3a1daf002aeb628c05e460955
+## Features
+
+Website ini memiliki beberapa fitur utama:
+
+- Company profile
+- Bootcamp & course information
+- Instructor profile
+- Testimonials
+- FAQ
+- Articles / educational content
+- Contact page
+
+---
+
+## Author
+
+Developed by **Orange Kode**
