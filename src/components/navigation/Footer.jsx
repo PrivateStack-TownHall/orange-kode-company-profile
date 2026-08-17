@@ -1,81 +1,119 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Instagram,
   Youtube,
   Linkedin,
   Twitter,
   MessageCircle,
-  Hexagon,
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  LogIn,
+  UserPlus,
 } from "lucide-react";
-import Image from "next/image";
 
 const menuLinks = [
   { label: "Courses", href: "/courses" },
+  { label: "Roadmap", href: "/roadmap" },
   { label: "Instructors", href: "/instructors" },
+  { label: "Galleries", href: "/galleries" },
   { label: "Articles", href: "/articles" },
   { label: "Testimonials", href: "/testimonials" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
-  { label: "Login", href: "/login" },
-  { label: "Register", href: "/register" },
+];
+
+const accountLinks = [
+  { label: "Login", href: "/login", icon: LogIn },
+  { label: "Register", href: "/register", icon: UserPlus },
 ];
 
 const categoryLinks = [
-  "Frontend Development",
-  "Backend Development",
-  "Fullstack Development",
-  "Mobile Development",
-  "Data Science",
-  "UI/UX Design",
+  { label: "Frontend Development", category: "frontend" },
+  { label: "Backend Development", category: "backend" },
+  { label: "Fullstack Development", category: "fullstack" },
+  { label: "Mobile Development", category: "mobile" },
+  { label: "Data Science", category: "data-science" },
+  { label: "UI/UX Design", category: "design" },
 ];
 
 const helpLinks = [
   { label: "FAQ", href: "/faq" },
-  { label: "Pusat Bantuan", href: "/faq" },
-  { label: "Syarat & Ketentuan", href: "/faq" },
-  { label: "Kebijakan Privasi", href: "/faq" },
-  { label: "Kebijakan Refund", href: "/faq" },
+  { label: "Pusat Bantuan", href: "/pusat-bantuan" },
+  { label: "Syarat & Ketentuan", href: "/syarat-ketentuan" },
+  { label: "Kebijakan Privasi", href: "/kebijakan-privasi" },
+  { label: "Kebijakan Refund", href: "/kebijakan-refund" },
+];
+
+const footerStats = [
+  { value: "85.000+", label: "Learner Aktif" },
+  { value: "120+", label: "Kursus Online" },
+  { value: "500+", label: "Perusahaan Terpercaya" },
+  { value: "4.9/5", label: "Rating Platform" },
 ];
 
 export default function Footer() {
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (!email) return;
+    setSubscribed(true);
+    setEmail("");
+  };
+
   return (
-    <footer className="border-t border-stone-100 bg-white mt-20">
-      <div className="max-w-7xl mx-auto px-5 md:px-8 py-14 grid grid-cols-2 md:grid-cols-4 gap-10">
+    <footer className="border-t border-stone-100 bg-stone-50/60">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 pt-10">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 bg-white border border-stone-100 rounded-2xl divide-x divide-stone-100">
+          {footerStats.map((s) => (
+            <div
+              key={s.label}
+              className="flex flex-col items-center text-center py-5 px-2"
+            >
+              <span className="text-xl md:text-2xl font-extrabold text-primary font-display">
+                {s.value}
+              </span>
+              <span className="text-[11px] md:text-xs text-ink-soft mt-1">
+                {s.label}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-5 md:px-8 py-14 grid grid-cols-2 lg:grid-cols-5 gap-10">
         {/* Brand */}
-        <div className="col-span-2 md:col-span-1">
+        <div className="col-span-2">
           <Link href="/" className="flex items-center gap-2 mb-4">
-            <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary text-white">
-              <Image src="/logo.png" alt="Logo" width={200} height={200} />{" "}
+            <span className="flex items-center justify-center w-8 h-8 rounded-lg text-white">
+              <Image src="/logo.png" alt="Logo" width={200} height={200} />
             </span>
             <span className="font-display font-extrabold text-lg text-ink">
               <span className="text-primary">Orange</span> Kode
             </span>
           </Link>
-          <p className="text-sm text-ink-soft leading-relaxed mb-4">
+          <p className="text-sm text-ink-soft leading-relaxed mb-4 max-w-xs">
             Platform belajar & bootcamp teknologi berbasis Indonesia dengan
             kurikulum praktis dan mentor berpengalaman.
           </p>
-          <div className="flex gap-3 text-ink-soft">
-            <Instagram
-              size={18}
-              className="hover:text-primary cursor-pointer transition-colors"
-            />
-            <Youtube
-              size={18}
-              className="hover:text-primary cursor-pointer transition-colors"
-            />
-            <Linkedin
-              size={18}
-              className="hover:text-primary cursor-pointer transition-colors"
-            />
-            <Twitter
-              size={18}
-              className="hover:text-primary cursor-pointer transition-colors"
-            />
-            <MessageCircle
-              size={18}
-              className="hover:text-primary cursor-pointer transition-colors"
-            />
+          <div className="flex gap-2 text-ink-soft">
+            {[Instagram, Youtube, Linkedin, Twitter, MessageCircle].map(
+              (Icon, i) => (
+                <span
+                  key={i}
+                  className="w-9 h-9 rounded-lg bg-white border border-stone-200 flex items-center justify-center hover:border-primary hover:text-primary cursor-pointer transition-colors"
+                >
+                  <Icon size={16} />
+                </span>
+              ),
+            )}
           </div>
         </div>
 
@@ -99,19 +137,19 @@ export default function Footer() {
             Kategori Kursus
           </h3>
           <div className="flex flex-col gap-2.5 text-sm text-ink-soft">
-            {categoryLinks.map((label) => (
+            {categoryLinks.map((link) => (
               <Link
-                key={label}
-                href="/courses"
+                key={link.label}
+                href={`/courses?category=${link.category}`}
                 className="hover:text-primary transition-colors"
               >
-                {label}
+                {link.label}
               </Link>
             ))}
           </div>
         </div>
 
-        <div>
+        <div className="col-span-2 lg:col-span-1">
           <h3 className="font-semibold text-sm text-ink mb-4">Bantuan</h3>
           <div className="flex flex-col gap-2.5 text-sm text-ink-soft mb-6">
             {helpLinks.map((link) => (
@@ -123,6 +161,46 @@ export default function Footer() {
                 {link.label}
               </Link>
             ))}
+          </div>
+        </div>
+
+        <div className="col-span-2 lg:col-span-5 lg:mt-2">
+          <div className="bg-white border border-stone-100 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-5">
+            <div>
+              <h3 className="font-bold text-ink mb-1">
+                Dapatkan update terbaru dari Orange Kode
+              </h3>
+              <p className="text-sm text-ink-soft">
+                Info kursus baru, event komunitas, dan promo spesial langsung ke
+                inbox kamu.
+              </p>
+            </div>
+            {subscribed ? (
+              <p className="text-sm font-semibold text-primary shrink-0">
+                Terima kasih! Kamu sudah berlangganan. 🎉
+              </p>
+            ) : (
+              <form
+                onSubmit={handleSubscribe}
+                className="flex w-full md:w-auto gap-2 shrink-0"
+              >
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email kamu"
+                  className="flex-1 md:w-64 px-4 py-2.5 rounded-lg border border-stone-200 text-sm focus:border-primary outline-none"
+                />
+                <button
+                  type="submit"
+                  className="flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-primary text-white text-sm font-semibold hover:bg-primary-dark transition-colors shrink-0"
+                >
+                  <Send size={14} />
+                  <span className="hidden sm:inline">Berlangganan</span>
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>

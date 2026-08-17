@@ -1,5 +1,5 @@
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
-import "@/styles/globals.css";
+import "@/app/styles/globals.css";
 import MainLayout from "@/layouts/MainLayout";
 import { icons } from "lucide-react";
 
